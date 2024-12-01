@@ -14,19 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(100)
-        ->has(Game::factory())
-        ->create();
+        User::factory(10)
+            ->has(Game::factory())
+            ->create();
 
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
 
-
         User::factory()->create([
-            'name' => 'Thu Ta Nyan',
-            'email' => 'thutanyan@example.com',
+            'name' => 'Luke',
+            'email' => 'luke@example.com',
         ]);
     }
 }

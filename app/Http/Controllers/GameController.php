@@ -14,10 +14,12 @@ class GameController extends Controller
      */
     public function index(Request $request)
     {
-        return inertia("Dashboard",[
-            "games"=>Game::with("playerOne")->whereNull("player_two_id")
-            ->oldest()
-            ->simplePaginate(100)
+        return inertia('Dashboard', [
+            'games' => Game::with('playerOne')
+                ->whereNull('player_two_id')
+                ->where('player_one_id', '!=', $request->user()->id)
+                ->oldest()
+                ->simplePaginate(100),
         ]);
     }
 
@@ -44,6 +46,8 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
+        $game->load(["playerOne","playerTwo"]);
+
         return inertia("Games/Show",compact("game"));
     }
 
