@@ -63,4 +63,10 @@ class GamePolicy
     {
         return false;
     }
+
+
+    public function join(User $user, Game $game)
+    {
+        return $game->player_one_id !== $user->id && $game->player_two_id === null;
+    }
 }

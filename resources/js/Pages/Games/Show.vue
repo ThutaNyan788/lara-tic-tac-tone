@@ -1,6 +1,8 @@
 <template>
     <AuthenticatedLayout>
         Testing!!
+
+        {{ $page.props.game }}
     </AuthenticatedLayout>
 </template>
 
